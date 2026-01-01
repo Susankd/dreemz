@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+.env.*
+log
+build
+.vscode
+package-lock.json
+yarn.lock
+docs/Dreemz_Solutions.md
