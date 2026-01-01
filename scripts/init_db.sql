@@ -1,5 +1,4 @@
 -- Dreemz Database Schema
--- Run this script to initialize the database: psql -U postgres -d dreemz -f scripts/init_db.sql
 
 -- 1. Users Table
 CREATE TABLE IF NOT EXISTS users (
@@ -19,7 +18,6 @@ CREATE TABLE IF NOT EXISTS posts (
 );
 
 -- 3. Viewed Posts (The core of the logic)
--- Tracks which pools a user has seen.
 CREATE TABLE IF NOT EXISTS user_viewed_posts (
     user_id INTEGER REFERENCES users(id),
     post_id INTEGER REFERENCES posts(id),
@@ -28,7 +26,6 @@ CREATE TABLE IF NOT EXISTS user_viewed_posts (
 );
 
 -- 4. User Feed State
--- Tracks cycle resets or other user-specific feed metadata
 CREATE TABLE IF NOT EXISTS user_feed_state (
     user_id INTEGER PRIMARY KEY REFERENCES users(id),
     cycle_version INTEGER DEFAULT 0,
@@ -44,7 +41,6 @@ CREATE TABLE IF NOT EXISTS devices (
     PRIMARY KEY (user_id, fcm_token)
 );
 
--- SEED DATA --
 
 -- Users
 INSERT INTO users (username, timezone, last_active_at) VALUES

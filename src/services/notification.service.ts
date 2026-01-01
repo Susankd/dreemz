@@ -4,7 +4,6 @@ import { Op } from 'sequelize';
 
 export class NotificationService {
 
-    // Simulate FCM Send
     private static async sendFCM(token: string, message: string): Promise<boolean> {
         return true;
     }
@@ -23,7 +22,6 @@ export class NotificationService {
      * Daily Digest Trigger
      */
     static async triggerDailyDigest(): Promise<{ sentCount: number }> {
-        // Last active > 24 hours ago
         const cutoff = new Date(Date.now() - 24 * 60 * 60 * 1000);
 
         const targets = await User.findAll({
